@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telsiz ve Haberleşme Eğitimi</title>
+  <meta name="description" content="Saha odaklı Telsiz & RF eğitimi — DMR/TETRA, röle, XPT, CPS ve spektrum analizörü uygulamaları." />
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div id="root"></div>
+
+  <!-- React 18 UMD -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+  <script>
+    (function() {
+      const { useState, useMemo } = React;
+
+      function TelsizEgitimSite() {
+        const [openIdx, setOpenIdx] = useState(null);
+
+        const nav = [
+          { id: "home", label: "Ana Sayfa" },
+          { id: "icerik", label: "İçerik" },
+          { id: "moduller", label: "Modüller" },
+          { id: "lab", label: "Laboratuvar" },
+          { id: "takvim", label: "Takvim & Kayıt" },
+          { id: "sss", label: "SSS" },
+          { id: "iletisim", label: "İletişim" },
+        ];
+
+        const modules = useMemo(() => [
+          {
+            title: "Temeller: RF, Frekans ve Dalga",
+            desc: "Frekans, dalga boyu, bant genişliği, dB, dBm, SNR, RSSI — sahada yorumlama ve ölçüm temelleri.",
+            bullets: ["RF spektrum bantları (VHF/UHF)", "Güç/seviye ve ölçüm birimleri", "Temel EMC/EMI"],
+          },
+          {
+            title: "Antenler ve Kablo Seçimi",
+            desc: "Omni/yönlü antenler, polarizasyon, VSWR, duplexer ve kavite filtre; RG58, RG213, Heliax karşılaştırması.",
+            bullets: ["Anten kazancı ve kapsama", "Duplexer ve filtreleme", "Konnektör tipleri: N, SMA, BNC"],
+          },
+          {
+            title: "Analog ve Dijital",
+            desc: "FM tabanlı analog sistemlerden DMR/TETRA dijital platformlara geçiş: ses kalitesi, şifreleme, veri servisleri.",
+            bullets: ["CTCSS/DCS", "TDMA (DMR), FDMA (TETRA)", "GPS, kısa mesaj, kimlik"],
+          },
+          {
+            title: "Sistem Mimarileri",
+            desc: "Simplex, konvansiyonel röle, XPT ve trunk sistemleri; multi-site, simulcast, RoIP mimarileri.",
+            bullets: ["Kapasite/öncelik yönetimi", "Frekans planlama", "Roaming ve IP altyapı"],
+          },
+          {
+            title: "CPS Programlama",
+            desc: "Hytera CPS ile zone/kanal yönetimi, color code, timeslot, scan list, şifreleme ve codeplug pratikleri.",
+            bullets: ["Cihaz okuma/yazma", "Sık hatalar ve çözümler", "Saha test checklist"],
+          },
+          {
+            title: "Spektrum Analizörü Uygulamaları",
+            desc: "Merkez frekans, span, RBW/VBW ayarı; TX güç/harmonik ölçümü, parazit tespiti ve röle çıkış kontrolü.",
+            bullets: ["Saha ölçümleri", "Kapsama doğrulama", "Kalibrasyon notları"],
+          },
+        ], []);
+
+        const faq = [
+          { q: "Bu eğitim kimler için?",
+            a: "Güvenlik, belediye, sanayi, enerji, lojistik gibi sektörlerde telsiz haberleşmesi kullanan teknik ekipler; yeni başlayan teknisyenler; sahada kurulum ve arıza giderme yapan personel; RF meraklıları."
+          },
+          { q: "Ön bilgi gerekir mi?",
+            a: "Temel elektrik/elektronik bilgisi faydalıdır; ancak sıfırdan başlayanlar için de içerik kademeli ilerler. Uygulama oturumları temel kavramları pekiştirir."
+          },
+          { q: "Sertifika veriliyor mu?",
+            a: "Evet. Final günündeki uygulama değerlendirmesi sonrası isimli dijital sertifika verilir."
+          },
+          { q: "Kurum içi eğitim yapıyor musunuz?",
+            a: "Evet. Saha şartlarınıza göre özelleştirilmiş müfredat ve kapsama ölçümü dahil kuruma özel paketler sunuyoruz."
+          },
+        ];
+
+        return React.createElement(
+          "div",
+          { className: "relative min-h-screen text-slate-100" },
+          React.createElement("div", {
+            className: "fixed inset-0 -z-30",
+            style: {
+              backgroundImage: "linear-gradient(120deg, #0b1020, #111827, #0f172a)",
+              backgroundSize: "160% 160%",
+              animation: "gradientShift 28s ease-in-out infinite"
+            }
+          }),
+          React.createElement("div", { className: "pointer-events-none fixed inset-0 -z-20 overflow-hidden" },
+            React.createElement("div", { className: "absolute -top-28 -left-24 h-80 w-80 rounded-full bg-cyan-500/15 blur-3xl" }),
+            React.createElement("div", { className: "absolute top-1/3 -right-20 h-80 w-80 rounded-full bg-indigo-500/15 blur-3xl" }),
+            React.createElement("div", { className: "absolute -bottom-16 left-1/3 h-80 w-80 rounded-full bg-fuchsia-500/15 blur-3xl" }),
+          ),
+          React.createElement("header", { className: "sticky top-0 z-40 backdrop-blur-xl bg-slate-900/60 border-b border-cyan-400/20" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16" },
+              React.createElement("a", { href: "#home", className: "flex items-center gap-2" },
+                React.createElement("div", { className: "h-9 w-9 grid place-items-center rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-bold shadow-md" }, "RF"),
+                React.createElement("div", { className: "leading-tight" },
+                  React.createElement("div", { className: "font-semibold tracking-tight" }, "Telsiz ve Haberleşme Eğitimi"),
+                  React.createElement("div", { className: "text-xs text-slate-300" }, "Profesyonel Sertifika Programı")
+                )
+              ),
+              React.createElement("nav", { className: "hidden md:flex items-center gap-6 text-sm" },
+                nav.map(n =>
+                  React.createElement("a", { key: n.id, href: `#${n.id}`, className: "hover:text-white/90" }, n.label)
+                ),
+                React.createElement("a", { href: "#takvim", className: "px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow hover:scale-[1.02] transition" }, "Kayıt Ol")
+              )
+            )
+          ),
+          React.createElement("section", { id: "home", className: "relative overflow-hidden" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center" },
+              React.createElement("div", { className: "rounded-3xl bg-slate-900/50 backdrop-blur-xl border border-cyan-400/10 p-8 shadow-lg" },
+                React.createElement("h1", { className: "text-3xl md:text-5xl font-extrabold tracking-tight" },
+                  React.createElement("span", { className: "text-cyan-300" }, "Saha Odaklı "), 
+                  React.createElement("span", { className: "underline decoration-4 decoration-fuchsia-500" }, "Telsiz"),
+                  " ve RF Eğitimi"
+                ),
+                React.createElement("p", { className: "mt-5 text-slate-300 md:text-lg" }, 
+                  "Analog ve dijital, DMR/TETRA, anten ve kablo mimarileri, röle ve XPT sistemleri, CPS programlama ve spektrum analizörü uygulamaları."
+                ),
+                React.createElement("div", { className: "mt-8 flex flex-wrap gap-3" },
+                  React.createElement("a", { href: "#takvim", className: "px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow hover:scale-[1.02] transition" }, "Takvim ve Kayıt"),
+                  React.createElement("a", { href: "#icerik", className: "px-5 py-3 rounded-xl border border-slate-600 bg-slate-800/50 hover:bg-slate-800/70" }, "Müfredatı Gör")
+                ),
+                React.createElement("ul", { className: "mt-6 text-sm text-slate-300 space-y-1" },
+                  React.createElement("li", null, "• 24 saat kapsamlı program • Uygulamalı laboratuvar • Dijital sertifika"),
+                  React.createElement("li", null, "• Kurum içi eğitim opsiyonu • Eğitim sonrası 30 gün mentorluk")
+                )
+              ),
+              React.createElement("div", { className: "relative" },
+                React.createElement("div", { className: "rounded-3xl border border-indigo-400/20 bg-indigo-950/40 backdrop-blur p-6 shadow-xl", style: { animation: "float 6s ease-in-out infinite" } },
+                  React.createElement("div", { className: "aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-slate-900/40 to-slate-800/30 grid place-items-center text-6xl" }, "📡"),
+                  React.createElement("div", { className: "mt-4 grid grid-cols-3 gap-3 text-xs" },
+                    ["DMR/TETRA", "XPT/Trunk", "CPS", "VSWR", "RBW/VBW", "RoIP"].map(k =>
+                      React.createElement("div", { key: k, className: "rounded-xl border border-indigo-300/20 bg-slate-900/50 backdrop-blur px-3 py-2 text-center shadow-sm" }, k)
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement("section", { className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid md:grid-cols-3 gap-6" },
+              [
+                { t: "Saha Gerçekleri", d: "Şehir içi parazit, bina içi zayıflama, kablo kayıpları — gerçek problem setleriyle çalışıyoruz." },
+                { t: "Modern Mimariler", d: "Konvansiyonelden XPT'ye, trunk ve RoIP entegrasyonlarına uzanan uçtan uca yaklaşım." },
+                { t: "Standartlara Uyum", d: "BTK mevzuatı, lisanslı bant kullanımı, IP67/68 ve MIL-STD gereksinimleri." },
+              ].map(f =>
+                React.createElement("div", { key: f.t, className: "rounded-3xl border border-cyan-400/10 bg-slate-800/60 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow" },
+                  React.createElement("h3", { className: "font-semibold text-lg text-cyan-200" }, f.t),
+                  React.createElement("p", { className: "mt-2 text-slate-300" }, f.d)
+                )
+              )
+            )
+          ),
+          React.createElement("section", { id: "icerik", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("div", { className: "flex items-end justify-between gap-6 flex-wrap" },
+                React.createElement("div", null,
+                  React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-fuchsia-200" }, "İçerik Özeti"),
+                  React.createElement("p", { className: "text-slate-300 mt-2 max-w-2xl" },
+                    "Terim sözlüğünden röle ve XPT sistemlerine, CPS programlamadan spektrum analizörüne kadar; teori ve pratik dengesi."
+                  )
+                ),
+                React.createElement("a", { href: "#takvim", className: "px-4 py-2 rounded-xl border border-slate-600 bg-slate-900/40 hover:bg-slate-900/60" }, "Tüm Programı Al")
+              ),
+              React.createElement("div", { className: "mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6" },
+                modules.map((m, i) =>
+                  React.createElement("article", { key: m.title, className: "rounded-3xl border border-fuchsia-400/10 bg-indigo-950/40 backdrop-blur p-6 hover:shadow-md transition-shadow" },
+                    React.createElement("header", { className: "flex items-start justify-between gap-3" },
+                      React.createElement("h3", { className: "font-semibold leading-tight pr-4 text-fuchsia-200" }, m.title),
+                      React.createElement("span", { className: "text-xs text-slate-300" }, "M" + (i + 1))
+                    ),
+                    React.createElement("p", { className: "mt-2 text-sm text-slate-300" }, m.desc),
+                    React.createElement("ul", { className: "mt-3 space-y-1 text-sm text-slate-200/90 list-disc list-inside" },
+                      m.bullets.map(b => React.createElement("li", { key: b }, b))
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement("section", { id: "moduller", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-cyan-200" }, "Modüller (Detaylı)"),
+              React.createElement("div", { className: "mt-6 grid lg:grid-cols-2 gap-6" },
+                [
+                  { title: "Konvansiyonel Röle — Temel Mimariler", body: "Tek kanal ve tek konuşma sınırlamaları, frekans çifti (RX/TX), sıra mantığı ve sağlam altyapı. AVM, küçük işletme, belediye ekipleri için tipik senaryolar." },
+                  { title: "XPT (Extended Pseudo Trunk)", body: "Dinamik kanal atama, master/submaster/slave rolleri, grup ve öncelik yönetimi. Konvansiyonelden trunk'a geçişte ekonomik ara çözüm." },
+                  { title: "Analog ve Dijital Geçiş", body: "CTCSS/DCS, TDMA/FDMA; şifreleme, metin mesajı, GPS, verimlilik ve kapsama kalitesi karşılaştırmaları." },
+                  { title: "RF Kabloları ve Konnektörler", body: "RG58/RG213/Heliax karşılaştırmaları; N, SMA, BNC konnektörleri ve saha montaj ipuçları (VSWR, sızdırmazlık)." },
+                  { title: "CPS ile Uygulama", body: "Zone/kanal, color code, timeslot, scan list; okuma ve yazma, codeplug sürüm uyumluluğu, yaygın hata ve çözümler." },
+                  { title: "Spektrum Analizörü Pratiği", body: "Center/Span, RBW/VBW; TX güç, harmonikler, parazit tespiti; saha kapsama haritalama ve kalibrasyon." },
+                ].map((item, idx) =>
+                  React.createElement("div", { key: idx, className: "rounded-3xl border border-cyan-400/10 p-6 bg-slate-900/60 backdrop-blur shadow-sm hover:shadow-md transition-shadow" },
+                    React.createElement("h3", { className: "font-semibold text-cyan-200" }, item.title),
+                    React.createElement("p", { className: "mt-2 text-slate-300 text-sm" }, item.body)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement("section", { id: "lab", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("div", { className: "grid lg:grid-cols-3 gap-6 items-start" },
+                React.createElement("div", { className: "lg:col-span-2 rounded-3xl bg-slate-900/50 backdrop-blur border border-fuchsia-400/10 p-8" },
+                  React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-fuchsia-200" }, "Uygulama Laboratuvarı"),
+                  React.createElement("ul", { className: "mt-4 space-y-2 text-slate-200 list-disc list-inside" },
+                    React.createElement("li", null, "Hytera CPS ile test kanalı oluşturma ve cihaz-röle eşleştirme"),
+                    React.createElement("li", null, "Röle çıkışında güç ve harmonik ölçümü, duplexer doğrulaması"),
+                    React.createElement("li", null, "RG58, RG213 ve 1/2 inç Heliax kablo kayıplarının karşılaştırmalı testi"),
+                    React.createElement("li", null, "Şehir içi ve kapalı alanda kapsama ölçümü ve parazit analizi")
+                  ),
+                  React.createElement("div", { className: "mt-6 grid sm:grid-cols-2 gap-4 text-sm" },
+                    React.createElement("div", { className: "rounded-2xl border border-fuchsia-400/10 p-4 bg-indigo-950/40 backdrop-blur" }, "Cihazlar: Spektrum Analizör, Güç Ölçer, Sinyal Jeneratörü, VSWR metre"),
+                    React.createElement("div", { className: "rounded-2xl border border-fuchsia-400/10 p-4 bg-indigo-950/40 backdrop-blur" }, "Yazılımlar: Hytera CPS, ölçüm ve raporlama şablonları")
+                  )
+                ),
+                React.createElement("div", { className: "rounded-3xl border border-indigo-400/20 bg-indigo-950/40 backdrop-blur p-6 shadow-md", style: { animation: "float 6s ease-in-out infinite" } },
+                  React.createElement("div", { className: "aspect-[4/3] w-full rounded-2xl bg-gradient-to-br from-slate-900/40 to-slate-800/30 grid place-items-center text-6xl" }, "🛰️"),
+                  React.createElement("p", { className: "mt-3 text-sm text-slate-300" }, "Her modül sonunda mini uygulama ve quiz ile öğrenme pekiştirilir. Final gününde sahaya uygun vaka çalışması yapılır.")
+                )
+              )
+            )
+          ),
+          React.createElement("section", { id: "takvim", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("div", { className: "flex items-end justify-between flex-wrap gap-4" },
+                React.createElement("div", null,
+                  React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-cyan-200" }, "Takvim ve Kayıt"),
+                  React.createElement("p", { className: "text-slate-300 mt-2" }, "Genel katılıma açık sınıflar ve kurum içi eğitim talepleri için formu doldurun.")
+                ),
+                React.createElement("a", { href: "#iletisim", className: "px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow hover:scale-[1.02] transition" }, "Ön Başvuru")
+              ),
+              React.createElement("div", { className: "mt-8 grid lg:grid-cols-3 gap-6" },
+                ["Hafta İçi (2 gün)", "Hafta Sonu (2 gün)", "Kuruma Özel"].map((t, i) =>
+                  React.createElement("div", { key: t, className: "rounded-3xl border border-cyan-400/10 p-6 bg-slate-900/60 backdrop-blur shadow-sm hover:shadow-md transition-shadow" },
+                    React.createElement("div", { className: "text-xs text-slate-300" }, "Paket " + (i + 1)),
+                    React.createElement("h3", { className: "font-semibold mt-1 text-cyan-200" }, t),
+                    React.createElement("ul", { className: "mt-3 text-sm text-slate-200 space-y-1 list-disc list-inside" },
+                      React.createElement("li", null, "Toplam 16-24 saat eğitim"),
+                      React.createElement("li", null, "Uygulamalı laboratuvar"),
+                      React.createElement("li", null, "Dijital sertifika")
+                    ),
+                    React.createElement("button", { className: "mt-4 w-full rounded-xl border border-slate-600 bg-slate-800/50 px-4 py-2 hover:bg-slate-800/70" }, "Detay İste")
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement("section", { className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-3 gap-6 items-center" },
+              React.createElement("div", { className: "lg:col-span-2 rounded-3xl bg-indigo-950/40 backdrop-blur border border-fuchsia-400/10 p-8" },
+                React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-fuchsia-200" }, "Eğitmen"),
+                React.createElement("p", { className: "mt-3 text-slate-300" }, "Oğuzhan Özen — Elektronik ve Haberleşme Mühendisi. Röle sistemleri, Hytera CPS programlama, RF ölçüm ve saha devreye alma alanlarında uygulamalı deneyim. Eğitimlerinde teori ve pratik dengesine odaklanır; katılımcılara sahada doğrudan uygulayabilecekleri kontrol listeleri ve şablonlar sağlar."),
+                React.createElement("div", { className: "mt-4 grid sm:grid-cols-3 gap-3 text-sm" },
+                  React.createElement("div", { className: "rounded-2xl border border-fuchsia-400/10 bg-slate-900/60 backdrop-blur p-3 shadow-sm" }, "Hytera CPS ve Codeplug"),
+                  React.createElement("div", { className: "rounded-2xl border border-fuchsia-400/10 bg-slate-900/60 backdrop-blur p-3 shadow-sm" }, "XPT ve Röle Mimarileri"),
+                  React.createElement("div", { className: "rounded-2xl border border-fuchsia-400/10 bg-slate-900/60 backdrop-blur p-3 shadow-sm" }, "Spektrum Analizörü Pratikleri")
+                )
+              ),
+              React.createElement("div", { className: "rounded-3xl border border-indigo-400/20 bg-slate-900/60 backdrop-blur p-6 shadow-md" },
+                React.createElement("div", { className: "aspect-square rounded-2xl bg-gradient-to-br from-slate-900/40 to-slate-800/30 grid place-items-center text-6xl" }, "👤"),
+                React.createElement("div", { className: "mt-3 text-sm text-slate-300" }, "İsteğe bağlı: Fotoğraf veya logo eklenebilir.")
+              )
+            )
+          ),
+          React.createElement("section", { id: "sss", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-cyan-200" }, "Sık Sorulan Sorular"),
+              React.createElement("div", { className: "mt-6 divide-y divide-slate-700/50 border border-slate-700/50 rounded-2xl bg-slate-900/50 backdrop-blur" },
+                faq.map((f, idx) =>
+                  React.createElement("div", { key: idx, className: "p-5" },
+                    React.createElement("button", {
+                      onClick: function(){ setOpenIdx(openIdx === idx ? null : idx); },
+                      className: "w-full flex items-center justify-between text-left"
+                    },
+                      React.createElement("span", { className: "font-medium" }, f.q),
+                      React.createElement("span", { className: "text-xl" }, openIdx === idx ? "-" : "+")
+                    ),
+                    openIdx === idx && React.createElement("p", { className: "mt-3 text-slate-300 text-sm" }, f.a)
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement("section", { id: "iletisim", className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14" },
+              React.createElement("h2", { className: "text-2xl md:text-3xl font-bold text-fuchsia-200" }, "Ön Başvuru / Teklif Al"),
+              React.createElement("p", { className: "mt-2 text-slate-300" }, "Formu doldurun; 24 saat içinde dönüş yapalım. Kurum içi eğitimler için kapsamı birlikte netleştirelim."),
+              React.createElement("form", { className: "mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4" },
+                React.createElement("input", { required: true, placeholder: "Ad Soyad", className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur placeholder-slate-300" }),
+                React.createElement("input", { required: true, placeholder: "E-posta", type: "email", className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur placeholder-slate-300" }),
+                React.createElement("input", { placeholder: "Kurum / Şirket", className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur placeholder-slate-300 sm:col-span-2" }),
+                React.createElement("select", { className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur" },
+                  React.createElement("option", null, "Hafta İçi (2 gün)"),
+                  React.createElement("option", null, "Hafta Sonu (2 gün)"),
+                  React.createElement("option", null, "Kuruma Özel")
+                ),
+                React.createElement("select", { className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur" },
+                  React.createElement("option", null, "Konu Tercihi: Temeller"),
+                  React.createElement("option", null, "Konu Tercihi: Röle ve XPT"),
+                  React.createElement("option", null, "Konu Tercihi: CPS ve Test")
+                ),
+                React.createElement("textarea", { placeholder: "Kısa notunuz (mevcut sistem, hedefler, katılımcı sayısı)", className: "rounded-xl border border-slate-600 px-4 py-3 bg-slate-900/60 backdrop-blur placeholder-slate-300 sm:col-span-2", rows: 4 }),
+                React.createElement("button", { type: "button", className: "mt-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white px-5 py-3 shadow hover:scale-[1.02] transition sm:col-span-2" }, "Gönder")
+              ),
+              React.createElement("p", { className: "mt-3 text-xs text-slate-400" }, "Not: Demo formdur. Gerçek yayında Formspree, Netlify Forms veya e-posta entegrasyonu eklenebilir.")
+            )
+          ),
+          React.createElement("footer", { className: "border-t border-slate-700/50" },
+            React.createElement("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-sm text-slate-300" },
+              React.createElement("div", { className: "flex flex-wrap items-center justify-between gap-4" },
+                React.createElement("div", null, "© " + new Date().getFullYear() + " Telsiz ve Haberleşme Eğitimi"),
+                React.createElement("div", { className: "flex items-center gap-4" },
+                  React.createElement("a", { href: "#icerik", className: "hover:text-white" }, "Müfredat"),
+                  React.createElement("a", { href: "#takvim", className: "hover:text-white" }, "Kayıt"),
+                  React.createElement("a", { href: "#iletisim", className: "hover:text-white" }, "İletişim")
+                )
+              )
+            )
+          )
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(TelsizEgitimSite));
+    })();
+  </script>
+</body>
+</html>
